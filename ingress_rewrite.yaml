@@ -1,0 +1,19 @@
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: otus-microservices-hw1-ingress-rewrite
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$2    
+  spec:
+    ingressClassName: nginx
+    rules:
+      - host: arch.homework
+        http:
+          paths:
+            - path: /otusapp/oleksandr_bedenko(/|$)(.*)
+              pathType: Prefix
+              backend:
+                service:
+                  name: otus-microservices-hw1-service
+                  port:
+                    number: 8000
