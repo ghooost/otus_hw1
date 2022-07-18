@@ -3,14 +3,14 @@
   metadata:
     name: otus-microservices-hw1-ingress-rewrite
     annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: /$2    
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
   spec:
     ingressClassName: nginx
     rules:
       - host: arch.homework
         http:
           paths:
-            - path: /otusapp/oleksandr_bedenko(/|$)(.*)
+            - path: /otusapp/oleksandr_bedenko/(.*)
               pathType: Prefix
               backend:
                 service:
